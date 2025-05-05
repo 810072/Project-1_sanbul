@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}예측 결과{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <h2 class="mb-4">산불 예측 결과</h2>
+        <div class="alert alert-success text-center" role="alert">
+            <h4 class="alert-heading">예상 피해 면적</h4>
+            <p class="display-6"><strong>{{ prediction }}</strong></p> {# Display the prediction passed from the route #}
+            <hr>
+            <p class="mb-0">이 예측은 제공된 데이터를 기반으로 한 추정치입니다.</p>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('prediction') }}" class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                </svg>
+                다시 예측하기
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

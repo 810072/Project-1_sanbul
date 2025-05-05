@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %} {# Import macro to render form #}
+
+{% block title %}산불 피해 면적 예측하기{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <h2 class="mb-4">예측 정보 입력</h2>
+      <p class="mb-4">산불 피해 면적 예측을 위해 아래 정보를 정확히 입력해주세요.</p>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+           {# Render the form object passed from the route #}
+           {{ render_form(form) }}
+        </div>
+      </div>
+
+      <div class="mt-4 text-muted small">
+        <p><strong>참고:</strong></p>
+        <ul>
+            <li>Longitude/Latitude: PDF에서 정의된 <strong>1부터 7까지의 격자(Grid) 인덱스</strong> 값을 입력해주세요.</li>
+            <li>온도: 섭씨(°C) 단위입니다.</li>
+            <li>풍속: 초속(m/s) 단위입니다.</li>
+            <li>요일: 'Holiday'는 공휴일 또는 특별한 날을 의미할 수 있습니다 (데이터 확인 필요).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

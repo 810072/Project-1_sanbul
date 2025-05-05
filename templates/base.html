@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{ bootstrap.load_css() }}
+
+    <title>{% block title %}AI 산불 예측{% endblock %}</title>
+    <style>
+      /* Optional: Add custom styles here */
+      body { padding-top: 56px; /* Adjust based on navbar height */ }
+      .container { padding-top: 20px; }
+      .form-control-description { font-size: 0.875em; color: #6c757d; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('index') }}">🌲 AI 산불 예측 서비스</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" aria-current="page" href="{{ url_for('index') }}">홈</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.endpoint == 'prediction' %}active{% endif %}" href="{{ url_for('prediction') }}">예측하기</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mt-4">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %} {# Page specific content goes here #}
+    </main>
+
+    <footer class="container mt-5 pt-3 border-top text-center text-muted">
+        <p>&copy; 2025 AI 기반 산불 예측 서비스</p> {# Adjust year/text as needed #}
+    </footer>
+
+    {{ bootstrap.load_js() }}
+  </body>
+</html>

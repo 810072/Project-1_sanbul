@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}홈 - AI 산불 예측{% endblock %}
+
+{% block content %}
+<div class="px-4 py-5 my-5 text-center rounded-3 border shadow-lg">
+    <h1 class="display-5 fw-bold"> AI 기반 산불 예측 서비스 by sangjean</h1>
+    <div class="col-lg-8 mx-auto">
+      <p class="lead mb-4">
+        경기도 지역의 산불 발생 데이터와 기상 데이터를 기반으로 학습된 AI 모델입니다.<br>
+        위치(경도, 위도), 날짜(월, 요일), 기상 정보(평균/최고 기온, 평균/최대 풍속)를 입력하여 예상되는 산불 피해 면적(ha)을 예측합니다.
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{{ url_for('prediction') }}" class="btn btn-primary btn-lg px-4 gap-3">예측 시작하기</a>
+        </div>
+    </div>
+  </div>
+{% endblock %}
